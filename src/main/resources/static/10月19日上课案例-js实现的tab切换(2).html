@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tab-Toggle</title>
+	<style>
+		*{padding:0px;margin:0px;list-style:none;}
+		#tab{margin:30px;}
+		ul li{float:left;
+			  background: #00f;
+			  color:#fff;
+			  font-weight:bold;
+			  height:30px;
+			  line-height:30px;
+			  margin-right:1px;
+			  padding:2px 5px;
+			  cursor:pointer;
+		}
+		#tab-content div{clear:both;
+						 display:none;
+		}
+		ul .tit{background: #0f0;
+			color:#f00;
+			font-weight:bold;
+		}
+
+		#tab-content .on{display:block;}
+
+	</style>
+</head>
+<body>
+	<div id="tab">
+	<ul id="tab-title">
+		<li class="tit">国际新闻</li>
+		<li>国内新闻</li>
+		<li>省内新闻</li>
+	</ul>
+
+	<div id="tab-content">
+		<div class="on">欢迎阅览国际新闻</div>
+		<div>中国新闻实时报道</div>
+		<div>大美河南欢迎来访</div>
+	</div>
+	</div>
+
+	<script>
+	var tits=document.getElementById("tab-title").getElementsByTagName("li");
+	var divs=document.getElementById("tab-content").getElementsByTagName("div");
+
+	for(var i=0;i<tits.length;i++){
+		tits[i].onmouseover=function(){
+			change(this);
+		}
+	}
+
+	function change(index){
+		for(var i=0;i<tits.length;i++){
+			if(tits[i]==index){
+				tits[i].className="tit";
+				divs[i].className="on";
+			}
+			else{
+				tits[i].className="";
+				divs[i].className="";
+			}
+		}
+	}
+
+	</script>
+</body>
+</html>

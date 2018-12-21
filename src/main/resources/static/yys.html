@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阴阳师</title>
+    <style>
+        *{padding:0px;margin:0px;list-style:none;}
+        a {
+            float:left;
+            background: #ffffff;
+            color:#000000;
+            font-weight:bold;
+            text-align: center;
+            width: 25%;
+            height:50px;
+            line-height:30px;
+            text-decoration: none;
+        }
+        #top_content div{
+            clear:both;
+            display:none;
+            height: 100px;
+            width: 495px;
+            left: 30px;
+        }
+        #top_content {
+            position: fixed;
+            top:50px;
+            height: 100px;
+            width: 495px;
+        }
+        .item {
+            width: 25%;
+            height: 50px;
+            background: #0f0;
+            color:#f00;
+            font-weight:bold;
+        }
+        .top_content_li {
+            float:left;
+        }
+        .section_header {
+            position:fixed;
+            height: 100%;
+            width:100%;
+        }
+        .wrap {
+            background-color: cyan;
+            height: 100%;
+            width: 100%;
+        }
+
+
+        #top_content .on{display:block;}
+
+        .wheel{
+            position:fixed;
+            top: 400px;
+            left: 600px;
+            width:490px;
+            height:170px;
+            overflow:hidden;
+        }
+
+        #list{position:absolute;bottom:5px;right:5px;}
+        #list li{float:left;
+            height:15px;
+            width:15px;
+            border:1px solid #666;
+            border-radius:50%;
+            text-align:center;
+            line-height:15px;
+            margin-right:5px;
+            background:#ccc;
+            color:#000;
+            cursor:pointer;
+
+        }
+        #list .on{background:#E97305;
+            color:#fff;}
+    </style>
+</head>
+<body background="images/bg/bg.jpg">
+
+<div class="wrap">
+
+    <div class="section_header">
+        <div class="top">
+            <div id="top_wrap">
+                <a href="//yys.163.com/index.html" target="_blank" title="官网首页" class="item">官网首页</a>
+                <a href="//yys.163.com/news/index.html" target="_blank" title="新闻资讯">新闻资讯</a>
+                <a href="//yys.163.com/shishen/index.html" target="_blank" title="式神录">式神录</a>
+                <a href="//yys.163.com/skill/index.html" target="_blank" title="游戏攻略">游戏攻略</a>
+            </div>
+            <div id="top_content">
+                <div class="on">
+                    <ul>
+                        <li class="top_content_li"><img src="images/top/one/1.jpg" height="100" width="165"/></li>
+                        <li class="top_content_li"><img src="images/top/one/2.jpg" height="100" width="165"/></li>
+                        <li class="top_content_li"><img src="images/top/one/3.jpg" height="100" width="165"/></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="top_content_li"><img src="images/top/two/ss_1_2fa7e81.jpg" height="100" width="165"/></li>
+                        <li class="top_content_li"><img src="images/top/two/ss_2_a4916b4.jpg" height="100" width="165"/></li>
+                        <li class="top_content_li"><img src="images/top/two/ss_3_017abcd.jpg" height="100" width="165"/></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="top_content_li"><img src="images/top/three/pic_1_fb5f1d1.jpg" height="100" width="165"/></li>
+                        <li class="top_content_li"><img src="images/top/three/pic_2_f1ba243.jpg" height="100" width="165"/></li>
+                        <li class="top_content_li"><img src="images/top/three/pic_4_171aa2f.jpg" height="100" width="165"/></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="top_content_li"><img src="images/top/four/b72ed9bd-7507-420a-b270-86c6c11d2b32.png" height="100" width="165"/></li>
+                        <li class="top_content_li"><img src="images/top/four/e0ac4f21-6274-4739-96f3-49aee84c5c5e.png" height="100" width="165"/></li>
+                        <li class="top_content_li"><img src="images/top/four/ff860406-35fc-4d48-b941-d23f84b00932.png" height="100" width="165"/></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wheel">
+        <ul id="pic">
+            <li><img src="images/01.jpg" ></li>
+            <li><img src="images/02.jpg" ></li>
+            <li><img src="images/03.jpg" ></li>
+            <li><img src="images/04.jpg" ></li>
+            <li><img src="images/05.jpg" ></li>
+        </ul>
+
+        <ol id="list">
+            <li class="on">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+</div>
+
+<script>
+    var tits=document.getElementById("top_wrap").getElementsByTagName("a");
+    var topDivs=document.getElementById("top_content").getElementsByTagName("div");
+    var topContent=document.getElementById("top_content");
+    for(var i=0;i<tits.length;i++){
+        tits[i].onmouseover=function(){
+            change(this);
+        }
+    }
+
+    function change(index){
+        for(var i=0;i<tits.length;i++){
+            if(tits[i]==index){
+                topContent.style.top = 50+"px";
+                if (i < 3) {
+                    topContent.style.left = 25*i+"%";
+                } else {
+                    topContent.style.left = 72+"%";
+                }
+
+                tits[i].className="item";
+                topDivs[i].className="on";
+
+            }
+            else{
+                topContent.className="";
+                tits[i].className="";
+                topDivs[i].className="";
+            }
+        }
+    }
+
+    var wheel=document.getElementById("wheel");
+    var pic=document.getElementById("pic");
+    var list=document.getElementById("list").getElementsByTagName("li");
+    var index=0;
+    var timer=null;
+
+    function auto(){
+        timer=setInterval(function(){
+            change(index);
+            index++;
+            if(index>=list.length){
+                index=0;
+            }
+
+        },2000);
+    }
+    auto();
+
+    function change(curIndex){
+        pic.style.marginTop=-175*curIndex+"px";
+        for(var i=0;i<list.length;i++){
+            list[i].className="";
+        }
+        list[curIndex].className="on";
+        index=curIndex;
+    }
+
+    wheel.onmouseover=function(){
+        clearInterval(timer);
+    }
+    wheel.onmouseout=auto;
+
+    for(var i=0;i<list.length;i++){
+        list[i].id=i;
+        list[i].onclick=function(){
+            change(this.id);
+        }
+    }
+</script>
+
+</body>
+</html>

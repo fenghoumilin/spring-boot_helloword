@@ -1,0 +1,22 @@
+application.properties:{
+    //springboot 全局配置文件
+    //用于修改springboot原本的配置文件
+}
+
+
+application.yml{
+    以数据为中心的配置文件 YAML
+    //修改服务器启动端口为8081
+    server:
+        port: 8081
+}
+
+获取配置的优先级：由高到低{
+    /file:./config/
+    classpath:/
+}
+
+手动命令行配置项目的访问路径{
+    --spring.config.location=/Users/liuwei/
+}
+

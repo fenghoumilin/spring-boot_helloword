@@ -1,0 +1,93 @@
+<!doctype html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>1215焦点轮播图</title>
+<style>
+	*{padding:0px;margin:0px;list-style:none;}
+	.wrap{margin:20px auto;
+		  width:490px;
+		  height:170px;
+		  overflow:hidden;
+		  position:relative;
+		  }
+	#list{position:absolute;bottom:5px;right:5px;}
+	#list li{float:left;
+			 height:15px;
+			 width:15px;
+			 border:1px solid #666;
+			 border-radius:50%;
+			 text-align:center;
+			 line-height:15px;
+			 margin-right:5px;
+			 background:#ccc;
+			 color:#000;
+			 cursor:pointer;
+			 
+	}
+	#list .on{background:#E97305;
+        color:#fff;}
+ </style>
+    
+</head>
+<body>
+  <div class="wrap" id='wrap'>
+    <ul id="pic">
+      <li><img src="images/01.jpg" ></li>
+      <li><img src="images/02.jpg" ></li>
+      <li><img src="images/03.jpg" ></li>
+      <li><img src="images/04.jpg" ></li>
+      <li><img src="images/05.jpg" ></li>    
+    </ul>
+    
+	<ol id="list">
+      <li class="on">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ol>
+  </div>
+  
+  <script>
+     var wrap=document.getElementById("wrap");
+	 var pic=document.getElementById("pic");
+	 var list=document.getElementById("list").getElementsByTagName("li");
+	 var index=0;
+	 var timer=null;
+	 	 
+	 function auto(){
+		timer=setInterval(function(){
+			index++;
+			if(index>=list.length){
+			index=0;
+			}
+			change(index);
+		},2000);
+	 }
+		auto();
+	
+	function change(curIndex){
+		pic.style.marginTop=-170*curIndex+"px";
+		for(var i=0;i<list.length;i++){
+			list[i].className="";
+		}
+		list[curIndex].className="on";
+		index=curIndex;
+	}	
+	 
+	 wrap.onmouseover=function(){
+		clearInterval(timer);
+	 }
+	 wrap.onmouseout=auto;
+	 
+	 for(var i=0;i<list.length;i++){
+          list[i].id=i;
+          list[i].onclick=function(){
+            change(this.id);          
+          }
+        }
+
+  </script>	
+</body>
+</html>
