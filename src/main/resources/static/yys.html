@@ -49,9 +49,14 @@
             height: 100%;
             width: 100%;
         }
+        #top_wrap {
+            top:0px;
+            width: 100%;
+            height: 50px;
+        }
 
 
-        #top_content .on{display:block;}
+        #top_content .onTop{display:block;}
 
         .wheel{
             position:fixed;
@@ -93,7 +98,7 @@
                 <a href="//yys.163.com/skill/index.html" target="_blank" title="游戏攻略">游戏攻略</a>
             </div>
             <div id="top_content">
-                <div class="on">
+                <div class="onTop">
                     <ul>
                         <li class="top_content_li"><img src="images/top/one/1.jpg" height="100" width="165"/></li>
                         <li class="top_content_li"><img src="images/top/one/2.jpg" height="100" width="165"/></li>
@@ -124,7 +129,7 @@
             </div>
         </div>
     </div>
-    <div class="wheel">
+    <div class="wheel" id="wheel">
         <ul id="pic">
             <li><img src="images/01.jpg" ></li>
             <li><img src="images/02.jpg" ></li>
@@ -147,13 +152,22 @@
     var tits=document.getElementById("top_wrap").getElementsByTagName("a");
     var topDivs=document.getElementById("top_content").getElementsByTagName("div");
     var topContent=document.getElementById("top_content");
+    var topWrap=document.getElementById("top_wrap");
+
+    topWrap.onmouseout = function () {
+        topContent.style.display="none";
+    };
+    topWrap.onmouseover = function () {
+        topContent.style.display="block";
+    };
+
     for(var i=0;i<tits.length;i++){
         tits[i].onmouseover=function(){
-            change(this);
+            topChange(this);
         }
     }
 
-    function change(index){
+    function topChange(index){
         for(var i=0;i<tits.length;i++){
             if(tits[i]==index){
                 topContent.style.top = 50+"px";
@@ -164,7 +178,7 @@
                 }
 
                 tits[i].className="item";
-                topDivs[i].className="on";
+                topDivs[i].className="onTop";
 
             }
             else{
@@ -175,18 +189,20 @@
         }
     }
 
+</script>
+<script>
     var wheel=document.getElementById("wheel");
     var pic=document.getElementById("pic");
     var list=document.getElementById("list").getElementsByTagName("li");
-    var index=0;
+    var roleIndex=0;
     var timer=null;
 
     function auto(){
         timer=setInterval(function(){
-            change(index);
-            index++;
-            if(index>=list.length){
-                index=0;
+            change(roleIndex);
+            roleIndex++;
+            if(roleIndex>=list.length){
+                roleIndex=0;
             }
 
         },2000);
@@ -195,16 +211,16 @@
 
     function change(curIndex){
         pic.style.marginTop=-175*curIndex+"px";
-        for(var i=0;i<list.length;i++){
-            list[i].className="";
+        for(var j=0;j<list.length;j++){
+            list[j].className="";
         }
         list[curIndex].className="on";
-        index=curIndex;
+        roleIndex=curIndex;
     }
 
     wheel.onmouseover=function(){
         clearInterval(timer);
-    }
+    };
     wheel.onmouseout=auto;
 
     for(var i=0;i<list.length;i++){
