@@ -99,8 +99,19 @@
             <version>6.1.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.44.Final</version>
+        </dependency>
 
-
+        <!-- lombok  -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
     </dependencies>
 
